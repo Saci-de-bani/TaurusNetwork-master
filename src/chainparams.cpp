@@ -127,12 +127,12 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1529467399;
+        genesis.nTime = 1531103329;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 28963683;
+        genesis.nNonce = 23453242;
 
         uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-        /*while (genesis.GetHash() > hashTarget)
+        while (genesis.GetHash() > hashTarget)
         {
             ++genesis.nNonce;
             if (genesis.nNonce == 0)
@@ -144,20 +144,19 @@ public:
             {
                 printf("nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
             }
-        }*/
-
+        }
         hashGenesisBlock = genesis.GetHash();
-        //printf("MN nNonce %u\n", genesis.nNonce);
-        //printf("MN %s\n", hashGenesisBlock.ToString().c_str());
-	    //printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        printf("MN nNonce %u\n", genesis.nNonce);
+        printf("MN %s\n", hashGenesisBlock.ToString().c_str());
+	    printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
         assert(hashGenesisBlock == uint256("0x00000e289f6dc66be372d5cee8d9e22161fdebb91ab51a2941a1b80948801f09"));
         assert(genesis.hashMerkleRoot == uint256("0x1e02a85ec91f5870311904afcaec93e570ed88a19dc60ef8047dccae52bdb850"));
 
-        vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-1.dynu.net", "taurusnetwork-seed-1.dynu.net"));
-        vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-2.dynu.net", "taurusnetwork-seed-2.dynu.net"));
-        vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-3.dynu.net", "taurusnetwork-seed-3.dynu.net"));
-        vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-4.dynu.net", "taurusnetwork-seed-4.dynu.net"));
-        vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-5.dynu.net", "taurusnetwork-seed-5.dynu.net"));
+      //  vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-1.dynu.net", "taurusnetwork-seed-1.dynu.net"));
+      //  vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-2.dynu.net", "taurusnetwork-seed-2.dynu.net"));
+     //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-3.dynu.net", "taurusnetwork-seed-3.dynu.net"));
+     //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-4.dynu.net", "taurusnetwork-seed-4.dynu.net"));
+     //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-5.dynu.net", "taurusnetwork-seed-5.dynu.net"));
         //vFixedSeeds.clear();
         //vSeeds.clear();
 
