@@ -109,7 +109,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60;
         nTargetSpacing = 1 * 60;
-        nLastPOWBlock = 20160;
+        nLastPOWBlock = 1000;
         nMaturity = 6;
         nMasternodeCountDrift = 20;
 	    nMasternodeColleteralLimxDev = 5000; //Params().MasternodeColleteralLimxDev()
@@ -129,10 +129,10 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1531103329;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 23453242;
+        genesis.nNonce = 24066391;
 
         uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-        while (genesis.GetHash() > hashTarget)
+/*        while (genesis.GetHash() > hashTarget)
         {
             ++genesis.nNonce;
             if (genesis.nNonce == 0)
@@ -144,12 +144,12 @@ public:
             {
                 printf("nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
             }
-        }
+        }*/
         hashGenesisBlock = genesis.GetHash();
-        printf("MN nNonce %u\n", genesis.nNonce);
-        printf("MN %s\n", hashGenesisBlock.ToString().c_str());
-	    printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x00000e289f6dc66be372d5cee8d9e22161fdebb91ab51a2941a1b80948801f09"));
+    //    printf("MN nNonce %u\n", genesis.nNonce);
+    //    printf("MN %s\n", hashGenesisBlock.ToString().c_str());
+//	    printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        assert(hashGenesisBlock == uint256("0x000008812141fa703f37966a552e0659e277d1e15f05b3eba4daf299c5e9ad27"));
         assert(genesis.hashMerkleRoot == uint256("0x1e02a85ec91f5870311904afcaec93e570ed88a19dc60ef8047dccae52bdb850"));
 
       //  vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-1.dynu.net", "taurusnetwork-seed-1.dynu.net"));
