@@ -83,6 +83,24 @@ script:
   fi
 - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
 after_script:
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then (echo "Upload goes here. Something like: scp -r $BASE_OUTDIR server" || echo "upload failed"); fi
-    - echo $TRAVIS_COMMIT_RANGE
-    - echo $TRAVIS_COMMIT_LOG
+- if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then (echo "Upload goes here. Something like: scp
+    -r $BASE_OUTDIR server" || echo "upload failed"); fi
+- echo $TRAVIS_COMMIT_RANGE
+- echo $TRAVIS_COMMIT_LOG
+before_deploy:
+- cd ..
+- git config --local user.name "sacidebani"
+- git config --local user.email "sacidebani@.noreply.github.com"
+- git tag "bulwark-1.3.1.0-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+- tar -zvcf taurusnetwork-3.0.0.1-$HOST.tar.gz -C $OUTDIR bin/
+- echo `pwd`
+deploy:
+  provider: releases
+  file_glob: true
+  api_key:
+    secure: W7hZSrGK0TuznJtjXcKiRVjpZdb2BNaWxTjQvbYHRWWj+gNXGFC+OPgj2ze2ygTIq85XN7v0zV509leQb0OCBi6kmpFOWIWTFHcZMvRWlnikPNGZoSR+jjNfBr3GGHTohiVDwi7Ci0Y8qR6Wi4jAcZV3pxsDTliFuryXDWibCAtVN+iJX8zCkgF6Ds0qsm7vin1GQZBgejHfMDzsxkezf+1TcFSkGlIT+324HJkhmIfGJeEJswWIuAWWpNRSIpKA+PSPemZXaCCXfzNqI8zDOcIgH1o8GMr1WsqRlvuB88sEXy+G1KYQyFZyd0MV5E2pYeJWMI455P8HgJiXpD1SAmy/sqM9HKw/0NCek30jJuVplUdO7UwU+kcLa1O4Xev+7CXiEEmBVJ7odxN+cuINVfjeJKzVJlXSK7jF4cht2y8qq3WVBS+xtWp8mGHF28aLl90Z2Kd8PMEI7jbQUIO0+mvcJbxu2cc6OmyOkEm5DZ2K5vfUSilF/nX+o1fmmgrc+XVdCi94GC01Cwjq3F9wwYn5LnziCHBFALWTUhaIjpFRO/YuNcq9Fr2qfSWPvcmKQbJmjb30y4DDZICkV4dNtTCl1Io6VjBDt6Oke6XH1NF3N4M4rvfxM1oktR5vB+rxWeUvd3oqrecFKuO2AudKbeuQGk1e+Fbr2otdca6cZh0=
+  file: taurusnetwork-3.0.0.1-*
+  skip_cleanup: true
+  on:
+    repo: Saci-de-bani/TaurusNetwork-master
+    branch: master
