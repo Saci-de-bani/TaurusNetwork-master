@@ -5,16 +5,16 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 2.0.0
+!define VERSION 3.0.0
 !define COMPANY "TaurusNetwork Core project"
 !define URL http://bit.taurusnetworks/
 
 # MUI Symbol Definitions
-!define MUI_ICON "/root/TAN/share/pixmaps/bitcoin.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "/root/TAN/share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "@abs_top_srcdir@/share/pixmaps/bitcoin.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "@abs_top_srcdir@/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "/root/TAN/share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "@abs_top_srcdir@/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
@@ -22,7 +22,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "TaurusNetwork Core"
 !define MUI_FINISHPAGE_RUN $INSTDIR\taurusnetwork-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/root/TAN/share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "@abs_top_srcdir@/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
@@ -48,7 +48,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /root/TAN/taurusnetwork-${VERSION}-win-setup.exe
+OutFile @abs_top_srcdir@//taurusnetwork-${VERSION}-win-setup.exe
 !if "" == "64"
 InstallDir $PROGRAMFILES64\TAN
 !else
@@ -73,14 +73,14 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /root/TAN/release/taurusnetwork-qt.exe
-    File /oname=COPYING.txt /root/TAN/COPYING
-    File /oname=readme.txt /root/TAN/doc/README_windows.txt
+    File @abs_top_srcdir@/release/taurusnetwork-qt.exe
+    File /oname=COPYING.txt @abs_top_srcdir@/COPYING
+    File /oname=readme.txt @abs_top_srcdir@/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /root/TAN/release/taurusnetworkd.exe
-    File /root/TAN/release/taurusnetwork-cli.exe
+    File @abs_top_srcdir@/release/taurusnetworkd.exe
+    File @abs_top_srcdir@/release/taurusnetwork-cli.exe
     SetOutPath $INSTDIR\doc
-    File /r /root/TAN/doc\*.*
+    File /r @abs_top_srcdir@/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
