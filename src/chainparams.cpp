@@ -98,7 +98,7 @@ public:
         pchMessageStart[1] = 0x62;
         pchMessageStart[2] = 0x55;
         pchMessageStart[3] = 0x28;
-        vAlertPubKey = ParseHex("04375db20be5c53b93678e2e41c9def7af38197280c65e813f682adf2ed501ac186022562dbdf2ce3204d07432660fb61ecad8e78b6b8d39c568fb892db8ecb736");
+        vAlertPubKey = ParseHex("04c0dd01c2d706f6feefaf58e636b8939f49f42bef5d1c9928300800a6226f1cba9c8311f999099573f39a60555cf46ab961b32e09ace336dcf903b48a6b1bef21");
         nDefaultPort = 18401;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         nSubsidyHalvingInterval = 210000;
@@ -109,8 +109,8 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60;
         nTargetSpacing = 1 * 60;
-        nLastPOWBlock = 1000;
-        nMaturity = 6;
+        nLastPOWBlock =500;
+        nMaturity = 10;
         nMasternodeCountDrift = 20;
 	    nMasternodeColleteralLimxDev = 5000; //Params().MasternodeColleteralLimxDev()
         nModifierUpdateBlock = 1; // we use the version 2 for dmd
@@ -122,14 +122,14 @@ public:
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 0 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04e668b57880e492fdd2f0cdfd45b52b078a32a5282b4784202ac53b1299837e271f780192a8b014d33b51a6f8bbfc4cfaa3385829452bec7b77bf2f8f97520526") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04ea7413b8f7889b6f43fca72edf2a57ff19c222aec9453855ca45abfed748bf6426b5482ec74628e1e1253fb0219c0a3382f24b047a46b6b26616eaea0ac80053") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1531103329;
+        genesis.nTime = 1531603249;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 24066391;
+        genesis.nNonce = 24811771;
 
         uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
 /*        while (genesis.GetHash() > hashTarget)
@@ -146,14 +146,14 @@ public:
             }
         }*/
         hashGenesisBlock = genesis.GetHash();
-    //    printf("MN nNonce %u\n", genesis.nNonce);
-    //    printf("MN %s\n", hashGenesisBlock.ToString().c_str());
-//	    printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x000008812141fa703f37966a552e0659e277d1e15f05b3eba4daf299c5e9ad27"));
-        assert(genesis.hashMerkleRoot == uint256("0x1e02a85ec91f5870311904afcaec93e570ed88a19dc60ef8047dccae52bdb850"));
+        //printf("MN nNonce %u\n", genesis.nNonce);
+        //printf("MN %s\n", hashGenesisBlock.ToString().c_str());
+        //printf("MN %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        assert(hashGenesisBlock == uint256("0x00000264e6263e8742d6a3981ac1b71dd3bc4502b8549f56534039753fa0be5c"));
+        assert(genesis.hashMerkleRoot == uint256("0x0ece4be5b521cfe14cbb90cfbde2b25a061fdea14bd81795dbd38cfee099fa57"));
 
-      //  vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-1.dynu.net", "taurusnetwork-seed-1.dynu.net"));
-      //  vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-2.dynu.net", "taurusnetwork-seed-2.dynu.net"));
+        vSeeds.push_back(CDNSSeedData("107.175.127.247", "107.175.127.247"));
+        vSeeds.push_back(CDNSSeedData("107.175.127.248", "107.175.127.248"));
      //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-3.dynu.net", "taurusnetwork-seed-3.dynu.net"));
      //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-4.dynu.net", "taurusnetwork-seed-4.dynu.net"));
      //   vSeeds.push_back(CDNSSeedData("taurusnetwork-seed-5.dynu.net", "taurusnetwork-seed-5.dynu.net"));
@@ -181,7 +181,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0478c3e932fbe183b2f665de937866cb1cfc5ed4b0bf733b72286f265ffc03ff52dfd669fbb3f77d630e5393da65c721a9a891d2c4c6aa515dfd25ffe545582357";
+        strSporkKey = "046aaf00d98afcda2cb7c6d1111016bc3fe9ffffafec6374f800f321d8a12e7f57c5c453db919ccbed33da88320789873c68d30074a4c9515b47f1659988a72aeb";
         strDarksendPoolDummyAddress = "AcmpqXViWUXNroqVNYRdKjKrFM6PNa1oTM";
         nStartMasternodePayments = 1527479817;
     }

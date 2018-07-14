@@ -92,8 +92,8 @@ before_deploy:
 - cd ..
 - git config --local user.name "Sacidebani"
 - git config --local user.email "Sacidebani@users.noreply.github.com"
-- git tag "taurusnetwork-3.0.0.1-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
-- tar -zvcf taurusnetwork-3.0.0.1-$HOST.tar.gz -C $OUTDIR bin/
+- git tag "taurusnetwork-4.0.0.1-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+- tar -zvcf taurusnetwork-4.0.0.1-$HOST.tar.gz -C $OUTDIR bin/
 - echo `pwd`
 - echo 'filecontents'
 - ls
@@ -103,7 +103,7 @@ deploy:
   file_glob: true
   api_key:
     secure: f1uEOyZ/ZDOf9iwMoobWzAxQG+eEU9DiVQijs+f5XIS+YgUi1YInFbAQvTYsoGutVpdK/S2iJFTIaL0cpYMN5qFW+kc3pgEmV5Qq3O+ptPE+R2bDLG/Tg31KdA+XfhXPAuy8kE0cBMr6dt7TSjhpSBBgBFueELYeG+DxIbzTuqsm6PV6ZZr+2R5NAcB2kHK/+2VH6txy0yj4aUTxMGTeB8yNKNImTmt/hxMDuglONT/dE03tRAW/xbx0uI240RJYgqh7+ULybvDXeHhDAP7XKerLsq0k2W7m8b7X0gxbq9AgTsGzQikKqU1PpbF8LFuvJljgwzqIK+qHdgSBhi+W6sje8FnHJeO0R1CUnIWBsdgIj/cx3FFjMDk1M80Al7OkMbMYkWgglmbyr8wMrXHH1MCTqXFTUPVlxPCNGEltWtsqDPVeyItBdx5sGfcbfIpX2u7kBGCOyc/wDvRJz4FEmpg71w+Jl+9/kK/4hVeB1pVWe/ZTROQW272XSRo3HgMQp4IYpZbStSoziUMgfcqmbES09XH7Y5Iad8P09zahqUzrpkZfM64Y6f0xRqElowgk6x1l/MXi3dZFihQZ7peA8l6SHv0sNbcQ7cXcxxOX+vCQ/svBDZ8wCSc14YOErnEgv0N3uAHna4nGEr/UfZNnVujA+B0GkbJVurs2mYzxqJA=
-  file: taurusnetwork-3.0.0.1-*
+  file: taurusnetwork-4.0.0.1-*
   skip_cleanup: true
   on:
     repo: Saci-de-bani/TaurusNetwork-master
